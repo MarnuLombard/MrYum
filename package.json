@@ -1,0 +1,38 @@
+{
+  "name": "mryum_robot",
+  "version": "0.0.1",
+  "description": "Toy Robot Simulator - Mr Yum Dev Exercise",
+  "main": "dist/main.js",
+  "bin": "dist/cli.js",
+  "scripts": {
+    "test": "NODE_ENV=testing jest ts-jest ./tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarnuLombard/MrYum.git"
+  },
+  "author": "MarnuLombard <mryum@mar.nu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarnuLombard/MrYum/issues"
+  },
+  "homepage": "https://github.com/MarnuLombard/MrYum#readme",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2",
+    "ts-jest": "^27.1.4"
+  }
+}
