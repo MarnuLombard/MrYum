@@ -20,5 +20,5 @@
     }
   },
   "compileOnSave": true,
-  "include": ["."]
+  "include": ["src/**/*.ts"]
 }
