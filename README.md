@@ -8,11 +8,12 @@ units x 5 units.
 - The robot is free to roam around the surface of the table, but must be prevented from falling to
 destruction. Any movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
 - Create an application that can read in commands of the following form -
-  * `PLACE X,Y,F MOVE`
+  * `PLACE X,Y,F`
+  * `MOVE`
   * `LEFT`
   * `RIGHT`
   * `REPORT`
-  * ``PLACE`` (*will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or
+- `PLACE` (*will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or
 WEST.*)
 - The origin (0,0) can be considered to be the SOUTH WEST most corner.
 - The first valid command to the robot is a `PLACE` command, after that, any sequence of
@@ -32,12 +33,14 @@ commands.
 placement of the toy robot.
 - Any move that would cause the robot to fall must be ignored. Example Input and Output:
   * Input:
-    * `PLACE 0,0,NORTH MOVE`
+    * `PLACE 0,0,NORTH`
+    * `MOVE`
     * `REPORT`
   * Output: `0,1,NORTH`
   * --
   * Input
-    * `PLACE 0,0,NORTH LEFT`
+    * `PLACE 0,0,NORTH`
+    * `LEFT`
     * `REPORT`
   * Output: `0,0,WEST`
 
