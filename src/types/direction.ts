@@ -1,8 +1,8 @@
 export enum Direction {
-  NORTH,
-  EAST,
-  SOUTH,
-  WEST,
+  NORTH = 'NORTH',
+  EAST = 'EAST',
+  SOUTH = 'SOUTH',
+  WEST = 'WEST',
 }
 
 export enum TurningDirection {
