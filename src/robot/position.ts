@@ -1,4 +1,4 @@
-import { Direction, TurningDirection } from '@/types/direction';
+import { Direction, TurningDirection } from 'types/direction';
 
 interface Next {
   increment: 1|-1;

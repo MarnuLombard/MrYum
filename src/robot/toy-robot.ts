@@ -1,5 +1,5 @@
-import { Position } from '@/robot/position';
-import { Direction, TurningDirection } from '@/types/direction';
+import { Position } from 'robot/position';
+import { Direction, TurningDirection } from 'types/direction';
 
 export class ToyRobot {
   private position?: Position;

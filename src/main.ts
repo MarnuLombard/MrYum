@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import chalk from 'chalk';
-import { ToyRobot } from '@/robot/toy-robot';
-import { Direction, TurningDirection } from '@/types/direction';
+import { ToyRobot } from 'robot/toy-robot';
+import { Direction, TurningDirection } from 'types/direction';
 
 /**
  * Split out the params when they contain a ','

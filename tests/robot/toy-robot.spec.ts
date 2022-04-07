@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { Direction, TurningDirection } from '@/types/direction';
-import { ToyRobot } from '@/robot/toy-robot';
+import { Direction, TurningDirection } from 'types/direction';
+import { ToyRobot } from 'robot/toy-robot';
 
 const { NORTH, SOUTH } = Direction;
 const { LEFT } = TurningDirection;

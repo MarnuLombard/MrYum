@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { Position } from '@/robot/position';
-import { Direction, TurningDirection } from '@/types/direction';
+import { Position } from 'robot/position';
+import { Direction, TurningDirection } from 'types/direction';
 
 const { LEFT, RIGHT } = TurningDirection;
 const {

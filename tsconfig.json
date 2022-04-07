@@ -15,9 +15,6 @@
     "baseUrl": "src",
     "noFallthroughCasesInSwitch": true,
     "outDir": "./dist",
-    "paths": {
-      "@/*": ["*"]
-    }
   },
   "compileOnSave": true,
   "include": ["src/**/*.ts"]
