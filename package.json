@@ -3,13 +3,20 @@
   "version": "0.0.1",
   "description": "Toy Robot Simulator - Mr Yum Dev Exercise",
   "main": "dist/main.js",
-  "bin": "dist/cli.js",
   "scripts": {
     "test": "NODE_ENV=testing jest ts-jest ./tests",
-    "build:dev": "tsc --build --watch",
-    "start:dev": "ts-node -r tsconfig-paths/register src/main.ts",
-    "build:prod": "tsc --build",
-    "start:prod": "TS_NODE_BASEURL=./dist node -r tsconfig-paths/register dist/main.js"
+    "build:cli:dev": "tsc --build --watch",
+    "build:web:dev": "react-scripts start",
+    "build:cli:prod": "tsc --build --verbose --pretty --listEmittedFiles",
+    "build:web:prod": "react-scripts build",
+    "build:dev": "npm-run-all --parallel build:web:dev build:cli:dev",
+    "build:prod": "npm-run-all --sequential build:web:prod build:cli:prod",
+    "start:cli:dev": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:web:dev": "npm run build:web:dev",
+    "start:cli:prod": "TS_NODE_BASEURL=./dist node -r tsconfig-paths/register dist/main.js",
+    "start:web:prod": "serve -s dist",
+    "start:dev": "npm-run-all --sequential start:cli:dev start:web:dev",
+    "start:prod": "npm-run-all --sequential start:cli:prod start:web:prod"
   },
   "repository": {
     "type": "git",
@@ -20,16 +27,28 @@
   "bugs": {
     "url": "https://github.com/MarnuLombard/MrYum/issues"
   },
-  "homepage": "https://github.com/MarnuLombard/MrYum#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@testing-library/jest-dom": "^5.16.3",
     "chalk": "^4.1.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^5.0.0",
+    "serve": "^13.0.2",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
     "@jest/globals": "^27.5.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^14.0.4",
     "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
@@ -37,11 +56,25 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "jest-dom": "^4.0.0",
+    "npm-run-all": "^4.1.5",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

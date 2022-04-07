@@ -35,6 +35,16 @@ module.exports = {
       },
     },
   },
+  overrides: [
+    {
+      files: [
+        'tests/**/*',
+      ],
+      env: {
+        jest: true,
+      },
+    },
+  ],
   rules: {
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/no-unused-vars': 'error',
@@ -48,5 +58,6 @@ module.exports = {
     'no-plusplus': 'off',
     'no-shadow': 'off', // See: https://github.com/typescript-eslint/typescript-eslint/issues/2552#issuecomment-691694839
     '@typescript-eslint/no-shadow': 'error',
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
   },
 };
