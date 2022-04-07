@@ -2,7 +2,7 @@ import { Position } from 'robot/position';
 import { Direction, TurningDirection } from 'types/direction';
 
 export class ToyRobot {
-  private position?: Position;
+  public position?: Position;
 
   place(x: number, y: number, direction: Direction) : ToyRobot {
     const robot = new ToyRobot();
