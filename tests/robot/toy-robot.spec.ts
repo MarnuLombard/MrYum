@@ -7,14 +7,14 @@ const { LEFT } = TurningDirection;
 
 describe('Toy Robot Movement and Reporting', () => {
   test('It only reports after being placed', () => {
-    const toyRobot = new ToyRobot();
+    let toyRobot = new ToyRobot();
 
     expect(toyRobot.report()).toBe('');
 
-    toyRobot.place(0, 0, NORTH);
+    toyRobot = toyRobot.place(0, 0, NORTH);
     expect(toyRobot.report()).toBe('0,0,NORTH');
 
-    toyRobot.place(3, 4, SOUTH);
+    toyRobot = toyRobot.place(3, 4, SOUTH);
     expect(toyRobot.report()).toBe('3,4,SOUTH');
   });
 
@@ -22,7 +22,20 @@ describe('Toy Robot Movement and Reporting', () => {
     const toyRobot = new ToyRobot().place(0, 0, SOUTH);
 
     expect(toyRobot).toBe(toyRobot);
-    expect(toyRobot.move()).toBe(toyRobot);
-    expect(toyRobot.turn(LEFT)).toBe(toyRobot);
+    expect(toyRobot.move()).toBeInstanceOf(ToyRobot);
+    expect(toyRobot.turn(LEFT)).toBeInstanceOf(ToyRobot);
+  });
+
+  test('It ensures methods are immutable', () => {
+    const toyRobot = new ToyRobot();
+
+    const toyRobot1 = toyRobot.place(0, 0, SOUTH);
+    expect(toyRobot1).not.toBe(toyRobot);
+
+    const toyRobot2 = toyRobot1.move();
+    expect(toyRobot2).not.toBe(toyRobot1);
+
+    const toyRobot3 = toyRobot2.turn(LEFT);
+    expect(toyRobot3).not.toBe(toyRobot2);
   });
 });

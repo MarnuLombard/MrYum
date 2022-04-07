@@ -5,9 +5,10 @@ export class ToyRobot {
   private position?: Position;
 
   place(x: number, y: number, direction: Direction) : ToyRobot {
-    this.position = Position.place(x, y, direction);
+    const robot = new ToyRobot();
+    robot.position = Position.place(x, y, direction);
 
-    return this;
+    return robot;
   }
 
   report(): string {
@@ -23,7 +24,11 @@ export class ToyRobot {
 
   move(): ToyRobot {
     if (this.position) {
-      this.position.move();
+      const { x, y, direction } = this.position;
+      const robot = this.place(x, y, direction);
+      robot.position?.move();
+
+      return robot;
     }
 
     return this;
@@ -31,7 +36,11 @@ export class ToyRobot {
 
   turn(turnDirection: TurningDirection): ToyRobot {
     if (this.position) {
-      this.position.turn(turnDirection);
+      const { x, y, direction } = this.position;
+      const robot = this.place(x, y, direction);
+      robot.position?.turn(turnDirection);
+
+      return robot;
     }
 
     return this;
