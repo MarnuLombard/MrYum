@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { ToyRobot } from '../robot/toy-robot';
-import { Position } from '../robot/position';
-import { Tile } from './Tile';
-import { Direction, TurningDirection } from '../types/direction';
+import './App.scss';
+import React, { useState } from 'react';
+import { ToyRobot } from 'robot/toy-robot';
+import { Position } from 'robot/position';
+import { Direction, TurningDirection } from 'types/direction';
+import { Board } from 'components/Board';
+import {
+  faArrowsToDot, faArrowUpRightDots, faRotateLeft, faRotateRight,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function App() {
-  // Create one row of count 5.
-  // Reversed so that we go from 4 -> 0
-  const rowTiles = [...Array(5).keys()].reverse();
-  // Create one row of count 5.
-  const columnTiles = [...Array(5).keys()];
-  const [robot, updateRobot] = useState(new ToyRobot());
-
-  const [tileVisible, setTileVisible] = useState('');
   const [x, setX] = useState<number>(0);
   const [y, setY] = useState<number>(0);
   const [direction, setDirection] = useState<Direction>(Direction.NORTH);
+  const [robot, updateRobot] = useState(new ToyRobot());
 
   function move() {
     const newRobot = robot.move();
@@ -25,44 +23,95 @@ export function App() {
     setY(y1);
   }
 
-  useEffect(() => {
-    setTimeout(() => setTileVisible('visible'), 500);
-  }, []);
-
   return (
-    <div className="container full_height">
-      <div className="wrapper">
-        <p>
-          {robot.report()}
-        </p>
-        <button type="button" onClick={() => updateRobot(robot.turn(TurningDirection.LEFT))}>Left</button>
-        <button type="button" onClick={move}>Move</button>
-        <button type="button" onClick={() => updateRobot(robot.turn(TurningDirection.RIGHT))}>Right</button>
-        <input type="number" value={x} onChange={(e) => setX(Number(e.target.value))} />
-        <input type="number" value={y} onChange={(e) => setY(Number(e.target.value))} />
-        <select value={direction} onChange={(e) => setDirection(e.target.value as Direction)}>
-          {
-            Object.entries(Direction)
-              .map(([key, value]) => <option key={key} value={value}>{value}</option>)
-          }
-        </select>
-        <button type="button" onClick={() => updateRobot(robot.place(x, y, direction))}>Place</button>
-        <div className="board">
-          { rowTiles.map((rowTile) => (
-            <div key={rowTile} className="tile_row">
-              { columnTiles.map((tile) => (
-                <Tile
-                  key={`${rowTile}:${tile}`}
-                  tileVisible={tileVisible}
-                  row={rowTile}
-                  column={tile}
-                  position={robot.position}
-                />
-              ))}
-            </div>
-          )) }
+    <>
+      <div className="header">
+        <h1>ToyRobot</h1>
+      </div>
+      <div className="container">
+        <div className="wrapper">
+          <p>
+            {
+              robot.report() || <em className="text--light">Place me first</em>
+            }
+          </p>
+          <button
+            className="button button--move button--icon_right"
+            type="button"
+            onClick={move}
+          >
+            Move
+            <FontAwesomeIcon className="icon" icon={faArrowUpRightDots} />
+          </button>
+          <button
+            type="button"
+            className="button button--left button--icon_left"
+            onClick={() => updateRobot(robot.turn(TurningDirection.LEFT))}
+          >
+            <FontAwesomeIcon className="icon" icon={faRotateLeft} />
+            Left
+          </button>
+
+          <div className="board__wrapper">
+            <Board robot={robot} />
+          </div>
+
+          <button
+            className="button button--right button--icon_right"
+            type="button"
+            onClick={() => updateRobot(robot.turn(TurningDirection.RIGHT))}
+          >
+            Right
+            <FontAwesomeIcon className="icon" icon={faRotateRight} />
+          </button>
+
+          <div className="placers__input">
+            <label htmlFor="x_input">
+              X
+              <input
+                className="input input--number"
+                type="number"
+                name="x_input"
+                value={x}
+                min="0"
+                data-testid="x"
+                onChange={(e) => setX(Number(e.target.value))}
+              />
+            </label>
+            <label htmlFor="y_input">
+              Y
+              <input
+                className="input input--number"
+                type="number"
+                name="y_input"
+                value={y}
+                min="0"
+                data-testid="y"
+                onChange={(e) => setY(Number(e.target.value))}
+              />
+            </label>
+            <select
+              className="input input--select"
+              value={direction}
+              data-testid="direction"
+              onChange={(e) => setDirection(e.target.value as Direction)}
+            >
+              {
+                Object.entries(Direction)
+                  .map(([key, value]) => <option key={key} value={value}>{value}</option>)
+              }
+            </select>
+            <button
+              className="button button--place button--icon_right"
+              type="button"
+              onClick={() => updateRobot(robot.place(x, y, direction))}
+            >
+              Place
+              <FontAwesomeIcon bounce={!robot.position} className="icon" icon={faArrowsToDot} />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

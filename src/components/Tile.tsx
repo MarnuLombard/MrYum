@@ -37,7 +37,7 @@ export function Tile({
       break;
   }
   return (
-    <div className={`tile ${tileVisible} ${isActive ? 'active' : null}`}>
+    <div data-testid={isActive && 'active'} className={`tile ${tileVisible} ${isActive ? 'active' : null}`}>
       <FontAwesomeIcon className="icon" icon={icon} />
     </div>
   );
