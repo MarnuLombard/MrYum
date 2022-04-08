@@ -1,0 +1,47 @@
+.board {
+  background: url('../../public/logo.png') no-repeat center center;
+  background-size: contain;
+  border: 1px solid #999;
+  border-radius: 0.4rem;
+  overflow: hidden;
+
+  &__wrapper {
+    display: inline-grid;
+    vertical-align: middle;
+  }
+}
+
+.tile_row {
+  margin: -0.6rem;
+}
+
+.tile {
+  border: 1px #aaa solid;
+  display: inline-grid;
+  margin: 0 -1px;
+  padding: 3.6rem;
+  position: relative;
+  transition: background-color 2s ease-in;
+}
+
+.tile.visible {
+  background-color: #fff;
+  display: inline-grid;
+}
+
+.tile .icon {
+  display: none;
+}
+
+.tile.active .icon {
+  display: block;
+  left: calc(50% - 0.5rem);
+  position: absolute;
+  top: calc(50% - 0.5rem);
+  transition: all 0.4s ease;
+}
+
+.tile.active .icon svg {
+  height: 1rem;
+  width: 1rem;
+}

@@ -34,14 +34,14 @@ Both use the same [core models](https://github.com/MarnuLombard/MrYum/tree/maste
  --- 
 
 #### Building
-To build the cli app on its own run:
-```bash
-$ npm run build:cli:prod
-```
-
 To build the web app on its own run:
 ```bash
 $ npm run build:web:prod
+```
+
+To build the cli app on its own run:
+```bash
+$ npm run build:cli:prod
 ```
 
 _(`npm run build:prod` does both)_
@@ -49,19 +49,19 @@ _(`npm run build:prod` does both)_
 ---
 ##### Executing
 
-To start the cli app on its own run:
-```bash
-$ npm run start:cli:prod
-```
-The contents of `./commands.txt` are read and parsed, then executed. Results or errors will be output to console.
-
-
 To start the web app on its own run:
 ```bash
 $ npm run start:web:prod
 ```
 
 The server will start and listen on [http://localhost:3000](http://localhost:3000)
+
+To start the cli app on its own run:
+```bash
+$ npm run start:cli:prod
+```
+The contents of `./commands.txt` are read and parsed, then executed. Results or errors will be output to console.
+
 
 _(`npm run start:prod` does both)_
 
