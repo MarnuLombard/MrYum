@@ -8,6 +8,7 @@ units x 5 units.
 
 - <a href="#setup">Setup</a>
 - <a href="#running">Running</a>
+- <a href="#testing">Testing</a>
 - <a href="#brief">Brief received</a>
 
 ## <a name="setup" href="#setup"></a> Setup
@@ -64,6 +65,21 @@ The contents of `./commands.txt` are read and parsed, then executed. Results or 
 
 
 _(`npm run start:prod` does both)_
+
+---
+
+## <a name="testing" href="#testing"></a> Testing
+
+Tests are run using `jest` (specifically `ts-jest`, and `@testing-library` for the components).
+
+The tests are stored in a separate folder instead of in `/src`. (See [/tests](https://github.com/MarnuLombard/MrYum/tree/master/src/tests))
+
+To execute tests, run:
+```bash
+$ npm run test
+# Or just `npm test` 
+```
+
 
 ---
 
