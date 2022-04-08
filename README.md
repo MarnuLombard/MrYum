@@ -30,7 +30,9 @@ $ cp .env.example .env
 
 The code is setup in two parts, the [cli app](https://github.com/MarnuLombard/MrYum/tree/master/src/main.ts) and the [react web app](https://github.com/MarnuLombard/MrYum/tree/master/src/components/App.tsx).  
 Both use the same [core models](https://github.com/MarnuLombard/MrYum/tree/master/src/robot).
+
  --- 
+
 #### Building
 To build the cli app on its own run:
 ```bash
