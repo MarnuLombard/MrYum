@@ -21,6 +21,10 @@ Install the dependencies
 ```bash
 $ npm install
 ```
+Add the `.env` (there are no secrets in the .env)
+```bash
+$ cp .env.example .env
+```
 
 ## <a name="running" href="#running"></a> How to run
 
