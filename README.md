@@ -21,6 +21,7 @@ $ git clone git@github.com:MarnuLombard/MrYum.git \
 Install the dependencies
 ```bash
 $ npm install
+# or `yarn install`, if you're so inclined
 ```
 Add the `.env` (there are no secrets in the .env)
 ```bash
@@ -48,7 +49,7 @@ $ npm run build:cli:prod
 _(`npm run build:prod` does both)_
 
 ---
-##### Executing
+#### Executing
 
 To start the web app on its own run:
 ```bash
@@ -83,7 +84,7 @@ $ npm run test
 
 ---
 
-## <a name="brief" href="#brief_received"></a> Brief received
+## <a name="brief" href="#brief"></a> Brief received
 ### Description:
 - The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5
 units x 5 units.
