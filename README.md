@@ -1,6 +1,67 @@
 # Mr Yum Dev Exercise
 ##### Toy Robot Simulator
 
+The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5
+units x 5 units.
+
+---
+
+- <a href="#setup">Setup</a>
+- <a href="#running">Running</a>
+- <a href="#brief">Brief received</a>
+
+## <a name="setup" href="#setup"></a> Setup
+
+Pull this repo  
+```bash
+$ git clone git@github.com:MarnuLombard/MrYum.git \
+&& cd MrYum
+```
+Install the dependencies
+```bash
+$ npm install
+```
+
+## <a name="running" href="#running"></a> How to run
+
+The code is setup in two parts, the [cli app](https://github.com/MarnuLombard/MrYum/tree/master/src/main.ts) and the [react web app](https://github.com/MarnuLombard/MrYum/tree/master/src/components/App.tsx).  
+Both use the same [core models](https://github.com/MarnuLombard/MrYum/tree/master/src/robot).
+ --- 
+#### Building
+To build the cli app on its own run:
+```bash
+$ npm run build:cli:prod
+```
+
+To build the web app on its own run:
+```bash
+$ npm run build:web:prod
+```
+
+_(`npm run build:prod` does both)_
+
+---
+##### Executing
+
+To start the cli app on its own run:
+```bash
+$ npm run start:cli:prod
+```
+The contents of `./commands.txt` are read and parsed, then executed. Results or errors will be output to console.
+
+
+To start the web app on its own run:
+```bash
+$ npm run start:web:prod
+```
+
+The server will start and listen on [http://localhost:3000](http://localhost:3000)
+
+_(`npm run start:prod` does both)_
+
+---
+
+## <a name="brief" href="#brief_received"></a> Brief received
 ### Description:
 - The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5
 units x 5 units.
