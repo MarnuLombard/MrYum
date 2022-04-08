@@ -17,26 +17,23 @@ function splitParams(params: string[]): string[] {
  * I found though that I was fighting against typescript and obfuscating a lot of the logic.
  * Because `action` has such a limited set of valid values, I've made the logic very explicit
  */
-function runCommand(robot: ToyRobot, line: string): void {
+// eslint-disable-next-line consistent-return
+function runCommand(robot: ToyRobot, line: string): ToyRobot {
   const [command, ...params] = line.split(' ');
   switch (command) {
     case 'PLACE':
       // Validation of input could be here
-      robot.place(...splitParams(params) as unknown as [number, number, Direction]);
-      break;
+      return robot.place(...splitParams(params) as unknown as [number, number, Direction]);
     case 'MOVE':
-      robot.move();
-      break;
+      return robot.move();
     case 'LEFT':
-      robot.turn(TurningDirection.LEFT);
-      break;
+      return robot.turn(TurningDirection.LEFT);
     case 'RIGHT':
-      robot.turn(TurningDirection.RIGHT);
-      break;
+      return robot.turn(TurningDirection.RIGHT);
     case 'REPORT':
       console.log(chalk.cyanBright(robot.report()));
       process.exit(0);
-      break;
+    // eslint-disable-next-line no-fallthrough
     default:
       console.error(chalk.bgRed(`${command} is not a command action name`));
       process.exit(1);
@@ -49,10 +46,9 @@ fs.readFile('./commands.txt', (err, data) => {
     process.exit(Number(err.code));
   }
 
-  const robot: ToyRobot = new ToyRobot();
   const commands: string[] = data.toString()
     .split('\n')
     .filter((line) => line.length);
 
-  commands.forEach((line) => runCommand(robot, line));
+  commands.reduce((robot: ToyRobot, line) => runCommand(robot, line), new ToyRobot());
 });
