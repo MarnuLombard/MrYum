@@ -3,6 +3,8 @@ import chalk from 'chalk';
 import { ToyRobot } from 'robot/toy-robot';
 import { Direction, TurningDirection } from 'types/direction';
 
+const commandsFilepath = `${__dirname}/../commands.txt`;
+
 /**
  * Split out the params when they contain a ','
  */
@@ -40,7 +42,7 @@ function runCommand(robot: ToyRobot, line: string): ToyRobot {
   }
 }
 
-fs.readFile('./commands.txt', (err, data) => {
+fs.readFile(commandsFilepath, (err, data) => {
   if (err) {
     console.error(chalk.bgRedBright(err.message));
     process.exit(Number(err.code));
